@@ -13,6 +13,7 @@ use rand::Rng;
 // Import the std modules (cmp and io)
 use std::{cmp::Ordering, io};
 
+#[allow(dead_code)]
 pub fn chap2() {
     println!("Guesst the number!");
 
