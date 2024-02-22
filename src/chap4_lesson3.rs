@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub fn chap4_lesson3() {
     let s = "Hello World!";
 
@@ -7,6 +8,7 @@ pub fn chap4_lesson3() {
     println!("word {word}");
 }
 
+#[allow(dead_code)]
 fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
