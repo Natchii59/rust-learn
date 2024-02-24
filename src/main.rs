@@ -1,26 +1,31 @@
-use std::ops::Add;
+use std::collections::HashMap;
 
 fn main() {
-    let s = String::new();
+    let mut scores = HashMap::new();
 
-    let data = "foo";
-    let mut s = data.to_string();
+    scores.insert(String::from("blue"), 10);
+    scores.insert(String::from("yellow"), 50);
 
-    s.push_str("bar");
+    let team_name = String::from("blue");
+    let score = scores.get(&team_name).copied().unwrap_or(0);
 
-    let mut s1 = String::from("foo");
-    let s2 = "bar";
-    s1.push_str(s2);
-    println!("s2 is {s2}");
+    println!("The score is {score}");
 
-    let s1 = String::from("hello, ");
-    let s2 = String::from("world!");
-    let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
+    for (key, value) in &scores {
+        println!("{key}: {value}");
+    }
 
-    let s1 = String::from("tic");
-    let s2 = String::from("tac");
-    let s3 = String::from("toe");
+    scores.entry(String::from("blue")).or_insert(100);
+    scores.entry(String::from("green")).or_insert(100);
 
-    // let s = s1 + "-" + &s2 + "-" + &s3;
-    let s = format!("{s1}-{s2}-{s3}");
+    let text = "hello world wonderful world";
+
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
 }
