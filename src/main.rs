@@ -1,23 +1,26 @@
+use std::ops::Add;
+
 fn main() {
-    let v = vec![1, 2, 3, 4, 5];
+    let s = String::new();
 
-    let first = v[0];
-    println!("The first element is {first}");
+    let data = "foo";
+    let mut s = data.to_string();
 
-    let third = v.get(2);
-    match third {
-        Some(third) => println!("The third element is {third}"),
-        None => println!("There is no third element"),
-    }
+    s.push_str("bar");
 
-    for i in &v {
-        println!("{i}");
-    }
+    let mut s1 = String::from("foo");
+    let s2 = "bar";
+    s1.push_str(s2);
+    println!("s2 is {s2}");
 
-    let mut v = vec![100, 37, 50];
-    for i in &mut v {
-        *i += 50;
-    }
+    let s1 = String::from("hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
 
-    println!("{:?}", v);
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    // let s = s1 + "-" + &s2 + "-" + &s3;
+    let s = format!("{s1}-{s2}-{s3}");
 }
